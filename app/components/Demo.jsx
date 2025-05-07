@@ -1,5 +1,6 @@
-import React from 'react';
-import { Check } from 'lucide-react';
+import React from "react";
+import { Check } from "lucide-react";
+import Link from "next/link";
 
 const StarterDemo = () => {
   return (
@@ -7,8 +8,12 @@ const StarterDemo = () => {
       <div className="container px-4 md:px-6">
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
           <div className="space-y-2">
-            <div className="inline-block rounded-lg bg-background px-3 py-1 text-sm">Starter Package</div>
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">Starter Demo</h2>
+            <div className="inline-block rounded-lg bg-background px-3 py-1 text-sm">
+              Starter Package
+            </div>
+            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
+              Starter Demo
+            </h2>
             <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
               Here's what you can expect with our $699 Starter package
             </p>
@@ -25,8 +30,9 @@ const StarterDemo = () => {
           <div className="flex flex-col justify-center space-y-4">
             <h3 className="text-2xl font-bold">Professional 5-Page Website</h3>
             <p className="text-muted-foreground">
-              Our Starter package includes a professionally designed website with up to 5 pages - perfect for small businesses 
-              looking to establish an online presence without breaking the bank.
+              Our Starter package includes a professionally designed website
+              with up to 5 pages - perfect for small businesses looking to
+              establish an online presence without breaking the bank.
             </p>
             <ul className="space-y-2">
               <li className="flex items-start gap-2">
@@ -50,7 +56,13 @@ const StarterDemo = () => {
                 <span>Social media integration</span>
               </li>
             </ul>
-            <div className="pt-4">
+            <div className="pt-4 flex gap-4">
+              <Link
+                href="/demos/starter"
+                className="inline-flex h-10 items-center justify-center rounded-md bg-primary px-8 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90"
+              >
+                View Demo
+              </Link>
               <a
                 href="#contact"
                 className="inline-flex h-10 items-center justify-center rounded-md bg-primary px-8 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90"
@@ -71,8 +83,12 @@ const BusinessDemo = () => {
       <div className="container px-4 md:px-6">
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
           <div className="space-y-2">
-            <div className="inline-block rounded-lg bg-muted px-3 py-1 text-sm">Business Package</div>
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">Business Demo</h2>
+            <div className="inline-block rounded-lg bg-muted px-3 py-1 text-sm">
+              Business Package
+            </div>
+            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
+              Business Demo
+            </h2>
             <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
               Here's what you can expect with our $1,499 Business package
             </p>
@@ -80,15 +96,20 @@ const BusinessDemo = () => {
         </div>
         <div className="mt-12 grid gap-6 lg:grid-cols-2">
           <div className="flex flex-col justify-center space-y-4 order-2 lg:order-1">
-            <h3 className="text-2xl font-bold">Enhanced 10-Page Business Website</h3>
+            <h3 className="text-2xl font-bold">
+              Enhanced 10-Page Business Website
+            </h3>
             <p className="text-muted-foreground">
-              Our Business package provides a comprehensive website solution with up to 10 pages, 
-              perfect for growing businesses that need more features and functionality.
+              Our Business package provides a comprehensive website solution
+              with up to 10 pages, perfect for growing businesses that need more
+              features and functionality.
             </p>
             <ul className="space-y-2">
               <li className="flex items-start gap-2">
                 <Check className="h-5 w-5 text-primary mt-0.5" />
-                <span>Premium design with custom animations and transitions</span>
+                <span>
+                  Premium design with custom animations and transitions
+                </span>
               </li>
               <li className="flex items-start gap-2">
                 <Check className="h-5 w-5 text-primary mt-0.5" />
@@ -104,10 +125,18 @@ const BusinessDemo = () => {
               </li>
               <li className="flex items-start gap-2">
                 <Check className="h-5 w-5 text-primary mt-0.5" />
-                <span>Google Analytics integration for performance tracking</span>
+                <span>
+                  Google Analytics integration for performance tracking
+                </span>
               </li>
             </ul>
-            <div className="pt-4">
+            <div className="pt-4 flex gap-4">
+              <Link
+                href="/demos/business"
+                className="inline-flex h-10 items-center justify-center rounded-md bg-primary px-8 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90"
+              >
+                View Demo
+              </Link>
               <a
                 href="#contact"
                 className="inline-flex h-10 items-center justify-center rounded-md bg-primary px-8 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90"
@@ -135,8 +164,12 @@ const PremiumDemo = () => {
       <div className="container px-4 md:px-6">
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
           <div className="space-y-2">
-            <div className="inline-block rounded-lg bg-background px-3 py-1 text-sm">Premium Package</div>
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">Premium Demo</h2>
+            <div className="inline-block rounded-lg bg-background px-3 py-1 text-sm">
+              Premium Package
+            </div>
+            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
+              Premium Demo
+            </h2>
             <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
               Here's what you can expect with our $2,799+ Premium package
             </p>
@@ -151,19 +184,26 @@ const PremiumDemo = () => {
             />
           </div>
           <div className="flex flex-col justify-center space-y-4">
-            <h3 className="text-2xl font-bold">Custom Enterprise-Grade Website</h3>
+            <h3 className="text-2xl font-bold">
+              Custom Enterprise-Grade Website
+            </h3>
             <p className="text-muted-foreground">
-              Our Premium package delivers a fully custom, enterprise-level website solution with all the 
-              advanced features and functionality your business needs to dominate online.
+              Our Premium package delivers a fully custom, enterprise-level
+              website solution with all the advanced features and functionality
+              your business needs to dominate online.
             </p>
             <ul className="space-y-2">
               <li className="flex items-start gap-2">
                 <Check className="h-5 w-5 text-primary mt-0.5" />
-                <span>Fully custom design tailored to your exact requirements</span>
+                <span>
+                  Fully custom design tailored to your exact requirements
+                </span>
               </li>
               <li className="flex items-start gap-2">
                 <Check className="h-5 w-5 text-primary mt-0.5" />
-                <span>E-commerce functionality with secure payment processing</span>
+                <span>
+                  E-commerce functionality with secure payment processing
+                </span>
               </li>
               <li className="flex items-start gap-2">
                 <Check className="h-5 w-5 text-primary mt-0.5" />
@@ -175,14 +215,22 @@ const PremiumDemo = () => {
               </li>
               <li className="flex items-start gap-2">
                 <Check className="h-5 w-5 text-primary mt-0.5" />
-                <span>Performance optimization for lightning-fast load times</span>
+                <span>
+                  Performance optimization for lightning-fast load times
+                </span>
               </li>
               <li className="flex items-start gap-2">
                 <Check className="h-5 w-5 text-primary mt-0.5" />
                 <span>Local business listing setup and optimization</span>
               </li>
             </ul>
-            <div className="pt-4">
+            <div className="pt-4 flex gap-4">
+              <Link
+                href="/demos/premium"
+                className="inline-flex h-10 items-center justify-center rounded-md bg-primary px-8 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90"
+              >
+                View Demo
+              </Link>
               <a
                 href="#contact"
                 className="inline-flex h-10 items-center justify-center rounded-md bg-primary px-8 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90"
