@@ -1,4 +1,7 @@
 import React from 'react';
+import { Badge } from "@/components/ui/badge";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 
 const TestimonialsSection = () => {
   const testimonials = [
@@ -27,7 +30,7 @@ const TestimonialsSection = () => {
       <div className="container px-4 md:px-6">
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
           <div className="space-y-2">
-            <div className="inline-block rounded-lg bg-background px-3 py-1 text-sm">Testimonials</div>
+            <Badge variant="outline" className="bg-background">Testimonials</Badge>
             <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">What Our Clients Say</h2>
             <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
               Don't just take our word for it - hear from some of our satisfied clients
@@ -36,28 +39,25 @@ const TestimonialsSection = () => {
         </div>
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 mt-12">
           {testimonials.map((testimonial, index) => (
-            <div key={index} className="rounded-lg border bg-background p-6 shadow-sm">
-              <div className="flex items-start gap-4">
-                <img
-                  alt={testimonial.name}
-                  className="rounded-full"
-                  height="64"
-                  src={testimonial.image}
-                  style={{
-                    aspectRatio: "1/1",
-                    objectFit: "cover",
-                  }}
-                  width="64"
-                />
-                <div className="grid gap-1">
-                  <h3 className="font-semibold">{testimonial.name}</h3>
-                  <p className="text-sm text-muted-foreground">{testimonial.role}</p>
+            <Card key={index} className="h-full">
+              <CardHeader className="pb-2">
+                <div className="flex items-start gap-4">
+                  <Avatar className="h-16 w-16">
+                    <AvatarImage src={testimonial.image} alt={testimonial.name} />
+                    <AvatarFallback>{testimonial.name.charAt(0)}</AvatarFallback>
+                  </Avatar>
+                  <div className="grid gap-1">
+                    <h3 className="font-semibold">{testimonial.name}</h3>
+                    <p className="text-sm text-muted-foreground">{testimonial.role}</p>
+                  </div>
                 </div>
-              </div>
-              <blockquote className="mt-4 text-muted-foreground">
-                "{testimonial.quote}"
-              </blockquote>
-            </div>
+              </CardHeader>
+              <CardContent>
+                <blockquote className="text-muted-foreground">
+                  "{testimonial.quote}"
+                </blockquote>
+              </CardContent>
+            </Card>
           ))}
         </div>
       </div>

@@ -1,6 +1,7 @@
 "use client";
 
 import React from 'react';
+import { Toaster } from "@/components/ui/sonner";
 import Header from './components/Header';
 import HeroSection from './components/Hero';
 import ServicesSection from './components/Services';
@@ -9,21 +10,30 @@ import DemoSections from './components/Demo';
 import FAQSection from './components/Faq';
 import ContactSection from './components/Contact';
 import Footer from './components/Footer';
+import { ThemeProvider } from "./components/Theme-provider";
 
 const App = () => {
   return (
-    <div className="min-h-screen bg-background flex flex-col">
-      <Header />
-      <main className="flex-1">
-        <HeroSection />
-        <ServicesSection />
-        <PricingSection />
-        <DemoSections />
-        <FAQSection />
-        <ContactSection />
-      </main>
-      <Footer />
-    </div>
+    <ThemeProvider 
+      attribute="class" 
+      defaultTheme="light"
+      enableSystem
+      disableTransitionOnChange
+    >
+      <div className="min-h-screen bg-background flex flex-col">
+        <Header />
+        <main className="flex-1">
+          <HeroSection />
+          <ServicesSection />
+          <PricingSection />
+          <DemoSections />
+          <FAQSection />
+          <ContactSection />
+        </main>
+        <Footer />
+        <Toaster />
+      </div>
+    </ThemeProvider>
   );
 };
 

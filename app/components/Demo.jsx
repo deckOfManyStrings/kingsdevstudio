@@ -1,6 +1,9 @@
 import React from "react";
 import { Check } from "lucide-react";
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 
 const StarterDemo = () => {
   return (
@@ -8,9 +11,9 @@ const StarterDemo = () => {
       <div className="container px-4 md:px-6">
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
           <div className="space-y-2">
-            <div className="inline-block rounded-lg bg-background px-3 py-1 text-sm">
+            <Badge variant="outline" className="bg-background">
               Starter Package
-            </div>
+            </Badge>
             <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
               Starter Demo
             </h2>
@@ -20,13 +23,13 @@ const StarterDemo = () => {
           </div>
         </div>
         <div className="mt-12 grid gap-6 lg:grid-cols-2">
-          <div className="rounded-lg overflow-hidden shadow-lg">
+          <Card className="overflow-hidden">
             <img
               src="/api/placeholder/800/600"
               alt="Starter Demo Website"
               className="w-full h-auto"
             />
-          </div>
+          </Card>
           <div className="flex flex-col justify-center space-y-4">
             <h3 className="text-2xl font-bold">Professional 5-Page Website</h3>
             <p className="text-muted-foreground">
@@ -57,18 +60,16 @@ const StarterDemo = () => {
               </li>
             </ul>
             <div className="pt-4 flex gap-4">
-              <Link
-                href="/demos/starter"
-                className="inline-flex h-10 items-center justify-center rounded-md bg-primary px-8 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90"
-              >
-                View Demo
-              </Link>
-              <a
-                href="#contact"
-                className="inline-flex h-10 items-center justify-center rounded-md bg-primary px-8 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90"
-              >
-                Get This Package
-              </a>
+              <Button asChild>
+                <Link href="/demos/starter">
+                  View Demo
+                </Link>
+              </Button>
+              <Button asChild>
+                <a href="#contact">
+                  Get This Package
+                </a>
+              </Button>
             </div>
           </div>
         </div>
@@ -83,9 +84,9 @@ const BusinessDemo = () => {
       <div className="container px-4 md:px-6">
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
           <div className="space-y-2">
-            <div className="inline-block rounded-lg bg-muted px-3 py-1 text-sm">
+            <Badge variant="outline" className="bg-muted">
               Business Package
-            </div>
+            </Badge>
             <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
               Business Demo
             </h2>
@@ -131,27 +132,25 @@ const BusinessDemo = () => {
               </li>
             </ul>
             <div className="pt-4 flex gap-4">
-              <Link
-                href="/demos/business"
-                className="inline-flex h-10 items-center justify-center rounded-md bg-primary px-8 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90"
-              >
-                View Demo
-              </Link>
-              <a
-                href="#contact"
-                className="inline-flex h-10 items-center justify-center rounded-md bg-primary px-8 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90"
-              >
-                Get This Package
-              </a>
+              <Button asChild>
+                <Link href="/demos/business">
+                  View Demo
+                </Link>
+              </Button>
+              <Button asChild>
+                <a href="#contact">
+                  Get This Package
+                </a>
+              </Button>
             </div>
           </div>
-          <div className="rounded-lg overflow-hidden shadow-lg order-1 lg:order-2">
+          <Card className="overflow-hidden order-1 lg:order-2">
             <img
               src="/api/placeholder/800/600"
               alt="Business Demo Website"
               className="w-full h-auto"
             />
-          </div>
+          </Card>
         </div>
       </div>
     </section>
@@ -164,9 +163,9 @@ const PremiumDemo = () => {
       <div className="container px-4 md:px-6">
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
           <div className="space-y-2">
-            <div className="inline-block rounded-lg bg-background px-3 py-1 text-sm">
+            <Badge variant="outline" className="bg-background">
               Premium Package
-            </div>
+            </Badge>
             <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
               Premium Demo
             </h2>
@@ -176,13 +175,13 @@ const PremiumDemo = () => {
           </div>
         </div>
         <div className="mt-12 grid gap-6 lg:grid-cols-2">
-          <div className="rounded-lg overflow-hidden shadow-lg">
+          <Card className="overflow-hidden">
             <img
               src="/api/placeholder/800/600"
               alt="Premium Demo Website"
               className="w-full h-auto"
             />
-          </div>
+          </Card>
           <div className="flex flex-col justify-center space-y-4">
             <h3 className="text-2xl font-bold">
               Custom Enterprise-Grade Website
@@ -225,18 +224,16 @@ const PremiumDemo = () => {
               </li>
             </ul>
             <div className="pt-4 flex gap-4">
-              <Link
-                href="/demos/premium"
-                className="inline-flex h-10 items-center justify-center rounded-md bg-primary px-8 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90"
-              >
-                View Demo
-              </Link>
-              <a
-                href="#contact"
-                className="inline-flex h-10 items-center justify-center rounded-md bg-primary px-8 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90"
-              >
-                Get This Package
-              </a>
+              <Button asChild>
+                <Link href="/demos/premium">
+                  View Demo
+                </Link>
+              </Button>
+              <Button asChild>
+                <a href="#contact">
+                  Get This Package
+                </a>
+              </Button>
             </div>
           </div>
         </div>

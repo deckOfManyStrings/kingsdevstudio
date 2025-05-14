@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import { Badge } from "@/components/ui/badge";
+import { Card, CardContent } from "@/components/ui/card";
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const PortfolioSection = () => {
   const [activeTab, setActiveTab] = useState('all');
@@ -51,62 +54,40 @@ const PortfolioSection = () => {
       <div className="container px-4 md:px-6">
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
           <div className="space-y-2">
-            <div className="inline-block rounded-lg bg-background px-3 py-1 text-sm">Our Portfolio</div>
+            <Badge variant="outline" className="bg-background">Our Portfolio</Badge>
             <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">Showcase of Our Work</h2>
             <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
               Browse our recent projects and see the quality we deliver
             </p>
           </div>
         </div>
+        
         <div className="mt-8 flex justify-center">
-          <div className="inline-flex gap-2 p-1 rounded-md bg-muted">
-            <button
-              onClick={() => setActiveTab('all')}
-              className={`rounded-sm px-3 py-1 text-sm font-medium ${
-                activeTab === 'all' ? 'bg-background shadow' : 'hover:bg-background/40'
-              }`}
-            >
-              All Projects
-            </button>
-            <button
-              onClick={() => setActiveTab('development')}
-              className={`rounded-sm px-3 py-1 text-sm font-medium ${
-                activeTab === 'development' ? 'bg-background shadow' : 'hover:bg-background/40'
-              }`}
-            >
-              Development
-            </button>
-            <button
-              onClick={() => setActiveTab('design')}
-              className={`rounded-sm px-3 py-1 text-sm font-medium ${
-                activeTab === 'design' ? 'bg-background shadow' : 'hover:bg-background/40'
-              }`}
-            >
-              Design
-            </button>
-            <button
-              onClick={() => setActiveTab('maintenance')}
-              className={`rounded-sm px-3 py-1 text-sm font-medium ${
-                activeTab === 'maintenance' ? 'bg-background shadow' : 'hover:bg-background/40'
-              }`}
-            >
-              Maintenance
-            </button>
-          </div>
+          <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full max-w-md">
+            <TabsList className="grid grid-cols-4 w-full bg-muted">
+              <TabsTrigger value="all">All Projects</TabsTrigger>
+              <TabsTrigger value="development">Development</TabsTrigger>
+              <TabsTrigger value="design">Design</TabsTrigger>
+              <TabsTrigger value="maintenance">Maintenance</TabsTrigger>
+            </TabsList>
+          </Tabs>
         </div>
+        
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
           {filteredPortfolio.map((item, index) => (
-            <div key={index} className="group relative overflow-hidden rounded-lg bg-background shadow-sm hover:shadow-md">
-              <img
-                alt={item.title}
-                className="h-60 w-full object-cover transition-all group-hover:scale-105"
-                src={item.image}
-              />
-              <div className="p-6">
+            <Card key={index} className="overflow-hidden group">
+              <div className="overflow-hidden">
+                <img
+                  alt={item.title}
+                  className="h-60 w-full object-cover transition-all duration-300 group-hover:scale-105"
+                  src={item.image}
+                />
+              </div>
+              <CardContent className="p-6">
                 <h3 className="text-xl font-bold">{item.title}</h3>
                 <p className="mt-2 text-muted-foreground">{item.description}</p>
-              </div>
-            </div>
+              </CardContent>
+            </Card>
           ))}
         </div>
       </div>

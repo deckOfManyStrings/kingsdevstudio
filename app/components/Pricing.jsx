@@ -1,5 +1,8 @@
 import React from 'react';
 import { Check } from 'lucide-react';
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 
 const PricingSection = () => {
   const pricingPlans = [
@@ -63,7 +66,7 @@ const PricingSection = () => {
       <div className="container px-4 md:px-6">
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
           <div className="space-y-2">
-            <div className="inline-block rounded-lg bg-muted px-3 py-1 text-sm">Pricing</div>
+            <Badge variant="outline" className="bg-muted">Pricing</Badge>
             <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">Transparent Pricing Plans</h2>
             <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
               Choose the package that fits your needs and budget
@@ -72,51 +75,60 @@ const PricingSection = () => {
         </div>
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 mt-12">
           {pricingPlans.map((plan, index) => (
-            <div 
-              key={index} 
-              className={`relative overflow-hidden rounded-lg border bg-background p-6 shadow-sm ${
-                plan.popular ? 'border-primary ring-2 ring-primary' : ''
-              }`}
+            <Card 
+              key={index}
+              className={
+                plan.popular 
+                  ? "relative border-primary shadow-md" 
+                  : "relative"
+              }
             >
               {plan.popular && (
-                <div className="absolute right-0 top-0 bg-primary px-3 py-1 text-xs font-medium text-primary-foreground">
-                  Most Popular
+                <div className="absolute right-0 top-0 z-10">
+                  <Badge className="rounded-tl-none rounded-br-none rounded-tr-md" variant="default">
+                    Most Popular
+                  </Badge>
                 </div>
               )}
-              <div className="mb-4 flex flex-col gap-1">
-                <h3 className="text-xl font-bold">{plan.title}</h3>
-                <p className="text-sm text-muted-foreground">{plan.description}</p>
-              </div>
-              <div className="mb-4">
-                <span className="text-4xl font-bold">{plan.price}</span>
-                {!plan.title.includes('Premium') && <span className="text-muted-foreground"> / project</span>}
-              </div>
-              <ul className="mb-6 space-y-2">
-                {plan.features.map((feature, featureIndex) => (
-                  <li key={featureIndex} className="flex items-center gap-2">
-                    <Check className="h-4 w-4 text-primary" />
-                    <span className="text-sm">{feature}</span>
-                  </li>
-                ))}
-              </ul>
-              <a
-                href={plan.demoLink}
-                className="mt-2 text-sm text-primary hover:underline block"
-                target="_blank"
-              >
-                View Demo Website
-              </a>
-              <a
-                href="#contact"
-                className={`mt-4 inline-flex w-full items-center justify-center rounded-md px-4 py-2 text-sm font-medium shadow transition-colors ${
-                  plan.popular
-                    ? 'bg-primary text-primary-foreground hover:bg-primary/90'
-                    : 'border border-input bg-background hover:bg-accent hover:text-accent-foreground'
-                }`}
-              >
-                {plan.cta}
-              </a>
-            </div>
+              <CardHeader>
+                <CardTitle>{plan.title}</CardTitle>
+                <CardDescription>{plan.description}</CardDescription>
+                <div className="mt-2">
+                  <span className="text-4xl font-bold">{plan.price}</span>
+                  {!plan.title.includes('Premium') && <span className="text-muted-foreground"> / project</span>}
+                </div>
+              </CardHeader>
+              <CardContent>
+                <ul className="space-y-2">
+                  {plan.features.map((feature, featureIndex) => (
+                    <li key={featureIndex} className="flex items-center gap-2">
+                      <Check className="h-4 w-4 text-primary flex-shrink-0" />
+                      <span className="text-sm">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+              </CardContent>
+              <CardFooter className="flex flex-col items-start gap-4">
+                <Button 
+                  asChild 
+                  variant="link" 
+                  className="h-auto p-0"
+                >
+                  <a href={plan.demoLink} target="_blank" rel="noopener noreferrer">
+                    View Demo Website
+                  </a>
+                </Button>
+                <Button 
+                  asChild 
+                  variant={plan.popular ? "default" : "outline"} 
+                  className="w-full"
+                >
+                  <a href="#contact">
+                    {plan.cta}
+                  </a>
+                </Button>
+              </CardFooter>
+            </Card>
           ))}
         </div>
       </div>

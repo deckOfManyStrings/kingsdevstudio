@@ -1,4 +1,6 @@
 import React from 'react';
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
 
 const HeroSection = () => {
   return (
@@ -13,27 +15,20 @@ const HeroSection = () => {
               We craft stunning, high-performance websites that connect with your audience and drive business growth.
             </p>
             <div className="flex flex-col gap-2 min-[400px]:flex-row">
-              <a
-                href="#contact"
-                className="inline-flex h-10 items-center justify-center rounded-md bg-primary px-8 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
-              >
-                Get Started
-              </a>
-              <a
-                href="#work"
-                className="inline-flex h-10 items-center justify-center rounded-md border border-input bg-background px-8 text-sm font-medium shadow-sm transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
-              >
-                View Our Work
-              </a>
+              <Button asChild size="lg">
+                <a href="#contact">
+                  Get Started
+                </a>
+              </Button>
             </div>
           </div>
-          <div className="mx-auto lg:order-last">
+          <Card className="mx-auto lg:order-last overflow-hidden border-0 shadow-lg">
             <img
               alt="Hero Image"
-              className="aspect-video overflow-hidden rounded-xl object-cover"
+              className="aspect-video w-full object-cover"
               src="/api/placeholder/600/400"
             />
-          </div>
+          </Card>
         </div>
       </div>
     </section>

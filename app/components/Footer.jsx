@@ -1,5 +1,7 @@
 import React from 'react';
 import { Github, Twitter, Linkedin } from 'lucide-react';
+import { Button } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
 
 const Footer = () => {
   return (
@@ -18,11 +20,21 @@ const Footer = () => {
             <div className="grid gap-3">
               <h3 className="text-sm font-medium">Explore</h3>
               <nav className="grid gap-3">
-                <a href="#services" className="text-sm hover:text-primary transition-colors">Services</a>
-                <a href="#work" className="text-sm hover:text-primary transition-colors">Our Work</a>
-                <a href="#pricing" className="text-sm hover:text-primary transition-colors">Pricing</a>
-                <a href="#testimonials" className="text-sm hover:text-primary transition-colors">Testimonials</a>
-                <a href="#contact" className="text-sm hover:text-primary transition-colors">Contact</a>
+                <Button asChild variant="link" className="h-auto p-0 justify-start">
+                  <a href="#services" className="text-sm">Services</a>
+                </Button>
+                <Button asChild variant="link" className="h-auto p-0 justify-start">
+                  <a href="#work" className="text-sm">Our Work</a>
+                </Button>
+                <Button asChild variant="link" className="h-auto p-0 justify-start">
+                  <a href="#pricing" className="text-sm">Pricing</a>
+                </Button>
+                <Button asChild variant="link" className="h-auto p-0 justify-start">
+                  <a href="#testimonials" className="text-sm">Testimonials</a>
+                </Button>
+                <Button asChild variant="link" className="h-auto p-0 justify-start">
+                  <a href="#contact" className="text-sm">Contact</a>
+                </Button>
               </nav>
             </div>
             <div className="grid gap-3">
@@ -35,21 +47,25 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        <div className="mt-8 border-t pt-8 flex items-center justify-between">
+        <Separator className="my-8" />
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs text-muted-foreground">© 2025 DevStudio. All rights reserved.</p>
           <div className="flex gap-4">
-            <a href="#" className="text-muted-foreground hover:text-foreground">
-              <Github className="h-4 w-4" />
-              <span className="sr-only">Github</span>
-            </a>
-            <a href="#" className="text-muted-foreground hover:text-foreground">
-              <Twitter className="h-4 w-4" />
-              <span className="sr-only">Twitter</span>
-            </a>
-            <a href="#" className="text-muted-foreground hover:text-foreground">
-              <Linkedin className="h-4 w-4" />
-              <span className="sr-only">LinkedIn</span>
-            </a>
+            <Button asChild variant="ghost" size="icon" className="h-8 w-8">
+              <a href="#" aria-label="GitHub">
+                <Github className="h-4 w-4" />
+              </a>
+            </Button>
+            <Button asChild variant="ghost" size="icon" className="h-8 w-8">
+              <a href="#" aria-label="Twitter">
+                <Twitter className="h-4 w-4" />
+              </a>
+            </Button>
+            <Button asChild variant="ghost" size="icon" className="h-8 w-8">
+              <a href="#" aria-label="LinkedIn">
+                <Linkedin className="h-4 w-4" />
+              </a>
+            </Button>
           </div>
         </div>
       </div>

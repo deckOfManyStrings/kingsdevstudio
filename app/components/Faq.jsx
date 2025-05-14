@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
-import { ChevronUp, ChevronDown } from 'lucide-react';
+import React from 'react';
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import { Badge } from "@/components/ui/badge";
 
 const FAQSection = () => {
-  const [activeFAQ, setActiveFAQ] = useState(null);
-
-  const toggleFAQ = (index) => {
-    setActiveFAQ(activeFAQ === index ? null : index);
-  };
-
   const faqs = [
     {
       question: "What is your typical process for new projects?",
@@ -32,11 +32,11 @@ const FAQSection = () => {
   ];
 
   return (
-    <section className="py-16 md:py-24 bg-background">
+    <section id='faq' className="py-16 md:py-24 bg-background">
       <div className="container px-4 md:px-6">
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
           <div className="space-y-2">
-            <div className="inline-block rounded-lg bg-muted px-3 py-1 text-sm">FAQ</div>
+            <Badge variant="outline" className="bg-muted">FAQ</Badge>
             <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">Frequently Asked Questions</h2>
             <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
               Find answers to common questions about our services and process
@@ -44,26 +44,18 @@ const FAQSection = () => {
           </div>
         </div>
         <div className="mx-auto max-w-3xl mt-12">
-          {faqs.map((faq, index) => (
-            <div key={index} className="border-b py-4">
-              <button
-                className="flex w-full items-center justify-between text-left"
-                onClick={() => toggleFAQ(index)}
-              >
-                <h3 className="font-medium">{faq.question}</h3>
-                {activeFAQ === index ? (
-                  <ChevronUp className="h-5 w-5 text-muted-foreground" />
-                ) : (
-                  <ChevronDown className="h-5 w-5 text-muted-foreground" />
-                )}
-              </button>
-              {activeFAQ === index && (
-                <div className="mt-2 text-muted-foreground">
-                  <p>{faq.answer}</p>
-                </div>
-              )}
-            </div>
-          ))}
+          <Accordion type="single" collapsible className="w-full">
+            {faqs.map((faq, index) => (
+              <AccordionItem key={index} value={`item-${index}`}>
+                <AccordionTrigger className="text-left font-medium">
+                  {faq.question}
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground">
+                  {faq.answer}
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
         </div>
       </div>
     </section>
