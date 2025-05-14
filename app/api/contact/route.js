@@ -1,5 +1,11 @@
+// app/api/contact/route.js
 import { NextResponse } from 'next/server';
-import nodemailer from 'nodemailer';
+import { createClient } from '@supabase/supabase-js';
+
+// Initialize Supabase client
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
 export async function POST(request) {
   try {
@@ -15,51 +21,36 @@ export async function POST(request) {
       );
     }
 
-    // Create email transporter
-    // Note: For production, use a proper email service like SendGrid, Mailgun, etc.
-    // This example uses a test SMTP account from Ethereal
-    // You'll need to replace this with your actual email service credentials
-    const transporter = nodemailer.createTransport({
-      host: process.env.EMAIL_HOST,
-      port: process.env.EMAIL_PORT,
-      secure: process.env.EMAIL_SECURE === 'true',
-      auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASSWORD,
-      },
-    });
+    // Save to Supabase
+    const { data, error } = await supabase
+      .from('contact_submissions')
+      .insert([
+        {
+          name,
+          email,
+          message,
+          subject: 'Website Inquiry', // Default subject
+          created_at: new Date().toISOString()
+        }
+      ]);
 
-    // Email content
-    const mailOptions = {
-      from: process.env.EMAIL_FROM,
-      to: process.env.EMAIL_TO, // Your email where you want to receive messages
-      replyTo: email,
-      subject: `Contact Form: Message from ${name}`,
-      text: `
-        Name: ${name}
-        Email: ${email}
-        
-        Message:
-        ${message}
-      `,
-      html: `
-        <h3>New Contact Form Submission</h3>
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Message:</strong></p>
-        <p>${message.replace(/\n/g, '<br>')}</p>
-      `,
-    };
-
-    // Send email
-    await transporter.sendMail(mailOptions);
+    if (error) {
+      console.error('Supabase error:', error);
+      return NextResponse.json(
+        { message: 'Database error: ' + error.message },
+        { status: 500 }
+      );
+    }
 
     // Return success response
-    return NextResponse.json({ message: 'Email sent successfully' });
+    return NextResponse.json({ 
+      message: 'Message sent successfully',
+      data
+    });
   } catch (error) {
     console.error('Contact form error:', error);
     return NextResponse.json(
-      { message: 'Failed to send email' },
+      { message: 'Server error: ' + error.message },
       { status: 500 }
     );
   }
